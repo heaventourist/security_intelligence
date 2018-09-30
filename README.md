@@ -56,6 +56,10 @@ $ source venv/bin/activate
 (venv) pip install Flask
 ```
 
+### DataBase:
+
+I use sqlite3 as a convenient disk database with API built in Python. The query to create the 'nvd' table is written in schema.sql. The application will automatically build a new table if the table is not created. I use import_data.py to help put all the data in json file into database. The json file is acquired from [National Vulnerability Database](https://nvd.nist.gov/vuln/data-feeds) and is named nvdcve-1.0-modified.json. You can definitely download other json files from the same origin. The fields I chose are vuln_id, summary, cvss_severity, product_name, vendor_name and extra. I use 'extra' to keep all the other infomation that cannot be represented by these chosen fields.
+
 ------------------------------------------------------------------------------------------------------------------------
 
 Steps to start the application:

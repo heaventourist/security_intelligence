@@ -36,6 +36,7 @@ $ npm run dev
 $ npm install iview --save
 ```
 You can refer to the concrete configurations [here](https://www.iviewui.com/docs/guide/start-en).
+
 4. Run `$ npm run build` to create a bundle. The output is directed to template folder the same level as `/frontend`.
 
 

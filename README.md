@@ -1,4 +1,5 @@
 # security_intelligence
+
 This webpage is built to help visualize a security intelligence data feed from [National Vulnerability Database](https://nvd.nist.gov/vuln/data-feeds). The front-end is written in [Vue.js](https://vuejs.org/v2/guide/index.html), a very good single page application (SPA) framework. During front-end development, I use WebPack with a lot of cool features provided. The UI components are taken from [iView](https://www.iviewui.com/). The backend is written in Python, using [Flask](http://flask.pocoo.org/) as framework to serve index.html which contains my Vue.js app. Flask has API endpoints to help access from SPA. The back-end data is stored in [sqlite3](https://docs.python.org/2/library/sqlite3.html), a built-in module available in Python.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -59,6 +60,9 @@ $ source venv/bin/activate
 Steps to start the application:
 
 1. You don't need to do anything to start the front-end because the compiled bundle has already been generated. But you can still try the development mode by running `$ npm run dev` in `/frontend` folder. I wrote two components to fulfill all features: Home.vue and About.vue. Home.vue is responsible for managing the data visualization in a table. About.vue is a simple explaination for features and motivation I had for this webpage. App.vue is the rendezvous where Home.vue and About.vue meets to form the overall display. 
+
 2. Because we are running in virtual environment, you don't have to configure the environment like I did. A script is provided to help start the backend easily:
-`(venv) bash run_server`.
+```
+(venv) bash run_server
+```
 

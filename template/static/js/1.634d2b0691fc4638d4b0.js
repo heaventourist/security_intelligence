@@ -1,0 +1,2 @@
+webpackJsonp([1],{"4VSB":function(t,e){},c27y:function(t,e,n){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s={render:function(){this.$createElement;this._self._c;return this._m(0)},staticRenderFns:[function(){var t=this.$createElement,e=this._self._c||t;return e("div",{staticClass:"About"},[e("h1",[this._v("About")])])}]};var a=n("VU/8")({name:"About",data:function(){return{msg:"Welcome to Your Vue.js App"}}},s,!1,function(t){n("4VSB")},"data-v-267aaafe",null);e.default=a.exports}});
+//# sourceMappingURL=1.634d2b0691fc4638d4b0.js.map

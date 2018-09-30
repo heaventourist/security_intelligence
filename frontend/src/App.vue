@@ -6,7 +6,7 @@
           <div class="layout-nav">
             <MenuItem name="1">
               <router-link to="/" exact tag='li'>
-                <Icon type="ios-stats" />
+                <Icon type="md-home" />
                     Home
               </router-link>
             </MenuItem>

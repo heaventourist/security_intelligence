@@ -7,7 +7,7 @@ Steps I took to set up the environment: ([reference](https://codeburst.io/full-s
 
 Front-end:
 1. I use vue-cli to help generate a basic Vue.js app. 
-`$ npm install -g vue-cli`
+```$ npm install -g vue-cli```
 2. Front-end and back-end code are split to different folders with corresponding names. To initialize fron-end part, Here is what I did:
 ```
 $ mkdir flaskvue
@@ -38,7 +38,7 @@ $ virtualenv -p python3 venv
 $ mkdir backend
 ```
 To enable virtual environment run (on macOS):
-`$ source venv/bin/activate`
+```$ source venv/bin/activate```
 
 2. Under virtual environment install Flask:
 ```

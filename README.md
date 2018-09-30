@@ -63,6 +63,11 @@ Steps to start the application:
 
 2. Because we are running in virtual environment, you don't have to configure the environment like I did. A script is provided to help start the backend easily:
 ```
+$ source venv/bin/activate
 (venv) bash run_server
+```
+If you want to exit virtual environment
+```
+(venv) deactivate
 ```
 

@@ -5,7 +5,7 @@ This webpage is built to help visualize a security intelligence data feed from [
 
 Steps I took to set up the environment: ([reference](https://codeburst.io/full-stack-single-page-application-with-vue-js-and-flask-b1e036315532))
 
-###Front-end:
+### Front-end:
 1. I use vue-cli to help generate a basic Vue.js app. 
 ```
 $ npm install -g vue-cli
@@ -38,7 +38,7 @@ You can refer to the concrete configurations [here](https://www.iviewui.com/docs
 4. Run `$ npm run build` to create a bundle. The output is directed to template folder the same level as `/frontend`.
 
 
-###Back-end:
+### Back-end:
 1. Inside root `/flaskvue` folder I creat a new sub-folder for back-end code and initialize virtual environment in the same level:
 ```
 $ virtualenv -p python3 venv

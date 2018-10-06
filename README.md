@@ -21,8 +21,8 @@ $ vue init webpack frontend
 * Vue build — Runtime only
 * Install vue-router? — Yes
 * Pick an ESLint preset — Standard
-* Setup unit tests with Karma + Mocha? — No
-* Setup e2e tests with Nightwatch? — No
+* Setup unit tests with Karma + Mocha? — Yes
+* Setup e2e tests with Nightwatch? — Yes
 
 To run the app in development mode:
 ```
@@ -31,9 +31,14 @@ $ npm install
 # after installation
 $ npm run dev
 ```
-4. iView is the UI toolkit I use.
+4. iView is the UI toolkit I used.
 ```
 $ npm install iview --save
+$ npm install axios --save
+```
+Because of uncertain bug from iView that would be caught by eslint, we need to add one more rule in file ".eslintrc.js" under "rules"
+```
+'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }]
 ```
 You can refer to the concrete configurations [here](https://www.iviewui.com/docs/guide/start-en).
 

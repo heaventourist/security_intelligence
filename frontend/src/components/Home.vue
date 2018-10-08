@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <Row type="flex" justify="end">
       <Col span="3">
         <Select v-model="search_type" placeholder="Select Search Type">
@@ -11,10 +11,10 @@
       </Col>
     </Row>
     <Row>
-      <Alert banner closable type="warning" v-if="error">Notice: Content Acquisition Failed...</Alert>
+      <Alert banner closable type="warning" v-if="error" class='alert'>{{errorMsg}}</Alert>
     </Row>
     <Row>
-      <Table stripe :loading="loading" :columns="my_col" :data="my_data" no-data-text="No Data Available"></Table>
+      <Table stripe :loading="loading" :columns="my_col" :data="my_data" :no-data-text="no_data_text" class='table'></Table>
     </Row>
     <Row type="flex" justify="center">
       <Page :current="page_num" :total="page_total" :page-size="page_size" show-total show-sizer @on-change="handle_page" @on-page-size-change="handle_page_size"/>
@@ -77,8 +77,9 @@ export default {
       search_type: '',
       query: '',
       page_num: 1,
-      page_total: 1,
-      page_size: 10
+      page_size: 10,
+      errorMsg: 'Notice: Content Acquisition Failed...',
+      no_data_text: 'No Data Available'
     }
   },
 
@@ -92,11 +93,16 @@ export default {
       } else {
         return this.data_in_total.slice(start, end)
       }
+    },
+
+    page_total: function () {
+      var dataSize = this.data_in_total.length
+      return Math.ceil(dataSize / this.page_size)
     }
   },
 
   methods: {
-    search_submit: function (event) {
+    async search_submit () {
       console.log('clicked')
       var url = ''
       var params = {}
@@ -113,7 +119,7 @@ export default {
       }
       console.log(params)
       if (url !== '') {
-        this.$http({method: 'get',
+        await this.$http({method: 'get',
           url: url,
           params: params
         }).then((response) => {
@@ -121,18 +127,19 @@ export default {
           var data = response['data']
           if (data['code'] === 0) {
             this.data_in_total = data['content']
-            this.page_total = data['content'].length
-            console.log(this.page_total)
             console.log('success')
           } else {
             this.error = true
             console.log('fail')
           }
+          this.loading = false
         }).catch(function (error) {
           console.log(error)
+          this.loading = false
         })
+      } else {
+        this.loading = false
       }
-      this.loading = false
     },
 
     handle_page: function (value) {
@@ -145,11 +152,9 @@ export default {
   },
   created () {
     this.$http.get('/fetch_all').then((response) => {
-      var data = response['data']
-      if (data['code'] === 0) {
-        this.data_in_total = data['content']
-        this.page_total = data['content'].length
-        console.log(this.page_total)
+      var tmpData = response['data']
+      if (tmpData['code'] === 0) {
+        this.data_in_total = tmpData['content']
         console.log('success')
       } else {
         this.error = true

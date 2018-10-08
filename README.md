@@ -31,10 +31,12 @@ $ npm install
 # after installation
 $ npm run dev
 ```
-4. iView is the UI toolkit I used.
+4. iView is the UI toolkit I used. Axios is a http library based on promise. vue-resource is an out-dated http library, the inclusion of which is to solve some uncertain bugs. he is a html decoder that could be useful somewhere.
 ```
 $ npm install iview --save
 $ npm install axios --save
+$ npm install vue-resource --save
+$ npm install he --save
 ```
 Because of uncertain bug from iView that would be caught by eslint, we need to add one more rule in file ".eslintrc.js" under "rules"
 ```
@@ -80,4 +82,10 @@ If you want to exit virtual environment
 ```
 (venv) deactivate
 ```
+------------------------------------------------------------------------------------------------------------------------
 
+test
+```
+$ npm install --save-dev @vue/test-utils
+$ npm install flush-promises --save
+```

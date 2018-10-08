@@ -1,28 +1,22 @@
 <template>
-  <div id="app" class="layout">
+  <div class="layout">
     <Layout>
-      <Header :style="{position: 'fixed', width: '100%'}">
+      <Header class="layout-header">
         <Menu mode="horizontal" theme="dark" active-name="1">
           <div class="layout-nav">
-            <MenuItem name="1">
-              <router-link to="/" exact tag='li'>
-                <Icon type="md-home" />
-                    Home
-              </router-link>
+            <MenuItem name='1' to="/">
+              <Icon type='md-home' v-html="menuLabel1" id="menu-1"/>
             </MenuItem>
-            <MenuItem name="2">
-                <router-link to="/about" exact tag='li'>
-                    <Icon type="ios-paper" />
-                    About
-                </router-link>
+            <MenuItem name='2' to="/about">
+              <Icon type='ios-paper' v-html="menuLabel2" id="menu-2"/>
             </MenuItem>
           </div>
         </Menu>
       </Header>
-      <Content :style="{margin: '88px 20px 0', background: '#fff', minHeight: '500px'}">
+      <Content class="layout-content">
         <router-view></router-view>
       </Content>
-      <Footer class="layout-footer-center">2018-2020 &copy; Wei Huo</Footer>
+      <Footer class="layout-footer-center" v-html="footer"></Footer>
     </Layout>
   </div>
 </template>
@@ -32,6 +26,16 @@ export default {
   name: 'App',
   data () {
     return {
+      menuLabel1: '<span>Home</span>',
+      menuLabel2: '<span>About</span>',
+      startYear: '2018',
+      endYear: '2020',
+      author: 'Wei Huo'
+    }
+  },
+  computed: {
+    footer: function () {
+      return this.startYear + '-' + this.endYear + ' &copy ' + this.author
     }
   }
 }
@@ -52,5 +56,17 @@ export default {
   }
   .layout-footer-center{
       text-align: center;
+  }
+  .layout-content{
+    margin-top: 88px;
+    margin-down: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background: #fff;
+    min-height: 500px
+  }
+  .layout-header{
+    position: fixed;
+    width: 100%
   }
 </style>

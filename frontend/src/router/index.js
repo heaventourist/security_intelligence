@@ -5,8 +5,8 @@ import 'iview/dist/styles/iview.css'
 import locale from 'iview/dist/locale/en-US'
 
 const routerOptions = [
-  { path: '/', component: 'Home' },
-  { path: '/about', component: 'About' }
+  {path: '/', component: 'Home', name: 'home'},
+  {path: '/about', component: 'About', name: 'about'}
 ]
 
 const routes = routerOptions.map(route => {

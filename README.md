@@ -88,4 +88,5 @@ test
 ```
 $ npm install --save-dev @vue/test-utils
 $ npm install flush-promises --save
+$ npm install karma-chrome-launcher --save-dev // test via chrome
 ```

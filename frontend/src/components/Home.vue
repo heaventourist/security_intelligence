@@ -2,19 +2,19 @@
   <div class="home">
     <Row type="flex" justify="end">
       <Col span="3">
-        <Select v-model="search_type" placeholder="Select Search Type">
+        <Select v-model="search_type" placeholder="Select Search Type" class="searchTypes">
           <Option v-for="item in searchTypeList" :value="item.value" :key="item.value"></Option>
         </Select>
       </Col>
       <Col span="4">
-        <Input search @on-search="search_submit" v-model="query" placeholder="Enter your query..." />
+        <Input search @on-search="search_submit" v-model="query" placeholder="Enter your query..." class="queryInput"/>
       </Col>
     </Row>
     <Row>
-      <Alert banner closable type="warning" v-if="error" class='alert'>{{errorMsg}}</Alert>
+      <Alert banner closable type="warning" v-if="error">{{errorMsg}}</Alert>
     </Row>
     <Row>
-      <Table stripe :loading="loading" :columns="my_col" :data="my_data" :no-data-text="no_data_text" class='table'></Table>
+      <Table stripe :loading="loading" :columns="my_col" :data="my_data" :no-data-text="no_data_text"></Table>
     </Row>
     <Row type="flex" justify="center">
       <Page :current="page_num" :total="page_total" :page-size="page_size" show-total show-sizer @on-change="handle_page" @on-page-size-change="handle_page_size"/>

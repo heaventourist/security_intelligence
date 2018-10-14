@@ -5,6 +5,7 @@ import App from '@/App.vue'
 import About from '@/components/About'
 import Home from '@/components/Home'
 import he from 'he'
+import flushPromises from "flush-promises"
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
@@ -42,13 +43,13 @@ describe('App.vue', () => {
         }
       }
     })
-
     expect(wrapper.find('#menu-1').text()).to.equal('test-label-1')
     expect(wrapper.find('#menu-2').text()).to.equal('test-label-2')
     expect(wrapper.find('.layout-footer-center').text()).to.equal(he.decode('test-start-year-test-end-year &copy test-author'))
   })
 
-  it('router-link is working', () => {
+  it('router-link is working', function() {
+    this.timeout(10000)
     const router = new VueRouter({routes})
     const wrapper = mount(App, {
       localVue,
@@ -59,8 +60,10 @@ describe('App.vue', () => {
       }
     })
     router.push('/')
-    expect(wrapper.find(Home).exists()).to.equal(true)
+    expect(wrapper.find({name: 'Home'}).exists()).to.equal(true)
+    expect(wrapper.find({name: 'About'}).exists()).to.equal(false)
     router.push('/about')
-    expect(wrapper.find(About).exists()).to.equal(true)
+    expect(wrapper.find({name: 'Home'}).exists()).to.equal(false)
+    expect(wrapper.find({name: 'About'}).exists()).to.equal(true)
   })
 })

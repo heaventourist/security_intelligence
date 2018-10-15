@@ -1,0 +1,29 @@
+matrix:
+  include:
+    - language: python
+      python:
+        - "2.7"
+        - "3.5"
+        - "3.6"
+      before_install:
+        - source venv/bin/activate
+      install:
+        - pip install -r requirements/requirement_backend.txt
+        - pip install coverage
+      script:
+        - bash run_server
+    - language: node_js
+      node_js: 
+        - "node"
+      before_install:
+        - cd frontend
+        - npm install
+      install:
+        - npm install iview --save
+        - npm install axios --save
+        - npm install he --save
+        - npm install --save-dev @vue/test-utils
+        - npm install flush-promises --save
+        - npm install karma-chrome-launcher --save-dev
+      script:
+        - npm test

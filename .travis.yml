@@ -38,3 +38,4 @@ matrix:
         - npm install karma-chrome-launcher --save
       script:
         - npm test
+

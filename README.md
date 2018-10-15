@@ -82,11 +82,29 @@ If you want to exit virtual environment
 ```
 (venv) deactivate
 ```
-------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 
-test
+### How to conduct unit test
+We need to install a few dependencies first
 ```
 $ npm install --save-dev @vue/test-utils
 $ npm install flush-promises --save
 $ npm install karma-chrome-launcher --save-dev // test via chrome
 ```
+Test and get coverage for frontend
+```
+$ cd frontend
+$ npm test
+```
+Then there will be a folder named "coverage" generated under test/unit which has the data we need.
+
+Test and get coverage for backend
+```
+$ python3 backendTest.py
+```
+If you need the coverage shown graphically
+```
+$(venv) pip3 install coverage
+$ coverage run backendTest.py && coverage html
+```
+Then there will be a folder named "htmlcov" generated under root directory which has the data we need.

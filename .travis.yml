@@ -14,11 +14,12 @@ matrix:
         - cd frontend
         - npm install
       install:
+        - npm i --save
         - npm install iview --save
         - npm install axios --save
         - npm install he --save
         - npm install --save-dev @vue/test-utils
         - npm install flush-promises --save
-        - npm install karma-chrome-launcher --save-dev
+        - npm install karma-chrome-launcher --save
       script:
         - npm test

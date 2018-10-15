@@ -1,11 +1,8 @@
 import os
-import sys
-import pytest
 import unittest
 import tempfile
 import json
 import re
-sys.path.insert(0, '..')
 import backend
 
 

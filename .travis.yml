@@ -4,13 +4,10 @@ matrix:
       python:
         - "3.6"
       cache: pip
-      before install:
-        - export PYTHONPATH=$PYTHONPATH:$(pwd)
       install:
         - pip3 install Flask
-        - pip3 install pytest
       script:
-        - python3 backend_test/test.py
+        - python3 backendTest.py
     - language: node_js
       node_js: 
         - "node"

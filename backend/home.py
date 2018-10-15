@@ -38,7 +38,6 @@ def fetchAll():
 @bp.route('/search_by_vuln_id', methods=['GET', 'POST'])
 def searchByVulnId():
     vuln_id = request.args.get('vuln_id')
-    print(vuln_id)
     store = get_nvd_store()
     tmp = json.loads(store.search_by_vuln_id(vuln_id))
     code = tmp['code']

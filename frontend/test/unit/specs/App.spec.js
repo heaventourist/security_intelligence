@@ -5,20 +5,14 @@ import App from '@/App.vue'
 import About from '@/components/About'
 import Home from '@/components/Home'
 import he from 'he'
-import flushPromises from "flush-promises"
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 localVue.prototype.$http = axios
 
-let m_url = ''
-let m_data = ''
-
 const mockHttp = {
   get: (_url, _data) => {
     return new Promise((resolve, reject) => {
-      m_url = _url
-      m_data = _data
       resolve({'data': {'code': 1}})
     })
   }
@@ -48,7 +42,7 @@ describe('App.vue', () => {
     expect(wrapper.find('.layout-footer-center').text()).to.equal(he.decode('test-start-year-test-end-year &copy test-author'))
   })
 
-  it('router-link is working', function() {
+  it('router-link is working', function () {
     this.timeout(10000)
     const router = new VueRouter({routes})
     const wrapper = mount(App, {

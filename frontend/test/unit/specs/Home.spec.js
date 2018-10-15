@@ -2,34 +2,25 @@ import { mount, createLocalVue } from '@vue/test-utils'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import Home from '@/components/Home'
-import flushPromises from "flush-promises"
+import flushPromises from 'flush-promises'
 
 const localVue = createLocalVue()
 localVue.use(VueRouter)
 localVue.prototype.$http = axios
 
-let m_url = ''
-let m_data = ''
-
-
 const mockHttp1 = {
   get: (_url, _data) => {
     return new Promise((resolve, reject) => {
-      m_url = _url
-      m_data = _data
-      resolve({'data': {'code': 0, 'content': [{'vuln_id': 'a1', 'summary': 'b1',
-                'cvss_severity': 'c1', 'product_name': 'd1', 'vendor_name': 'e1'},
-                {'vuln_id': 'a2', 'summary': 'b2',
-                'cvss_severity': 'c2', 'product_name': 'd2', 'vendor_name': 'e2'},
-                {'vuln_id': 'a3', 'summary': 'b3',
-                'cvss_severity': 'c3', 'product_name': 'd3', 'vendor_name': 'e3'}]}})
+      resolve({'data': {'code': 0,
+        'content': [{'vuln_id': 'a1', 'summary': 'b1', 'cvss_severity': 'c1', 'product_name': 'd1', 'vendor_name': 'e1'},
+          {'vuln_id': 'a2', 'summary': 'b2', 'cvss_severity': 'c2', 'product_name': 'd2', 'vendor_name': 'e2'},
+          {'vuln_id': 'a3', 'summary': 'b3', 'cvss_severity': 'c3', 'product_name': 'd3', 'vendor_name': 'e3'}]}})
     })
   },
   post: (_url, _data) => {
     return new Promise((resolve, reject) => {
-      m_url = _url
-      m_data = _data
-      resolve({'data': {'code': 0, 'content': search(Object.keys(m_data)[0], Object.values(m_data)[0])}})
+      let mData = _data
+      resolve({'data': {'code': 0, 'content': search(Object.keys(mData)[0], Object.values(mData)[0])}})
     })
   }
 }
@@ -37,8 +28,6 @@ const mockHttp1 = {
 const mockHttp2 = {
   get: (_url, _data) => {
     return new Promise((resolve, reject) => {
-      m_url = _url
-      m_data = _data
       resolve({'data': {'code': 1, 'content': []}})
     })
   }
@@ -144,8 +133,7 @@ describe('Home.vue', () => {
       }
     })
     expect(wrapper.find('td > span').isVisible()).to.equal(true)
-    wrapper.setData({data_in_total: [{'vuln_id': 'a', 'summary': 'b',
-      'cvss_severity': 'c', 'product_name': 'd', 'vendor_name': 'e'}]})
+    wrapper.setData({data_in_total: [{'vuln_id': 'a', 'summary': 'b', 'cvss_severity': 'c', 'product_name': 'd', 'vendor_name': 'e'}]})
     // console.log(wrapper.findAll('td > span'))
     expect(wrapper.findAll('td > div > span').length).to.equal(5)
     expect(wrapper.find('td > span').isVisible()).to.equal(false)
@@ -164,19 +152,15 @@ describe('Home.vue', () => {
     input.trigger('input')
     expect(wrapper.vm.query).to.equal('100')
   })
-
 })
 
 // simulate the database
-function search (m_searchtype, m_query) {
-  let tmp_data = [{'vuln_id': 'a1', 'summary': 'b1',
-        'cvss_severity': 'c1', 'product_name': 'd1', 'vendor_name': 'e1'},
-        {'vuln_id': 'a2', 'summary': 'b2',
-        'cvss_severity': 'c2', 'product_name': 'd2', 'vendor_name': 'e2'},
-        {'vuln_id': 'a3', 'summary': 'b3',
-        'cvss_severity': 'c3', 'product_name': 'd3', 'vendor_name': 'e3'}]
-  let res = tmp_data.reduce(function (x, y) {
-    if (y[m_searchtype] == m_query) {
+function search (mSearchtype, mQuery) {
+  let tmpData = [{'vuln_id': 'a1', 'summary': 'b1', 'cvss_severity': 'c1', 'product_name': 'd1', 'vendor_name': 'e1'},
+    {'vuln_id': 'a2', 'summary': 'b2', 'cvss_severity': 'c2', 'product_name': 'd2', 'vendor_name': 'e2'},
+    {'vuln_id': 'a3', 'summary': 'b3', 'cvss_severity': 'c3', 'product_name': 'd3', 'vendor_name': 'e3'}]
+  let res = tmpData.reduce(function (x, y) {
+    if (y[mSearchtype] === mQuery) {
       return x.concat([y])
     } else {
       return x

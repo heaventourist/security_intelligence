@@ -8,8 +8,7 @@ matrix:
       before_install:
         - source venv/bin/activate
       install:
-        - pip install -r requirements/requirement_backend.txt
-        - pip install coverage
+        - pip install Flask
       script:
         - bash run_server
     - language: node_js

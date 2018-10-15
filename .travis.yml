@@ -1,5 +1,6 @@
 matrix:
   include:
+    - sudo: required
     - language: python
       python:
         - "2.7"
@@ -10,6 +11,8 @@ matrix:
     - language: node_js
       node_js: 
         - "node"
+      addons:
+        - chrome: stable
       before_install:
         - cd frontend
         - npm install

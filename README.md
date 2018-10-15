@@ -35,7 +35,6 @@ $ npm run dev
 ```
 $ npm install iview --save
 $ npm install axios --save
-$ npm install vue-resource --save
 $ npm install he --save
 ```
 Because of uncertain bug from iView that would be caught by eslint, we need to add one more rule in file ".eslintrc.js" under "rules"

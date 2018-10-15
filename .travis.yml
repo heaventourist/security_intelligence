@@ -5,7 +5,7 @@ matrix:
         - "3.6"
       cache: pip
       before install:
-        - "export PYTHONPATH=$PYTHONPATH:$(pwd)"
+        - export PYTHONPATH=$PYTHONPATH:$(pwd)
       install:
         - pip3 install Flask
         - pip3 install pytest

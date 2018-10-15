@@ -2,12 +2,11 @@ matrix:
   include:
     - language: python
       python:
-        - "2.7"
-        - "3.5"
         - "3.6"
+      cache: pip
       install:
-        - pip install Flask
-        - pip install pytest
+        - pip3 install Flask
+        - pip3 install pytest
       script:
         - python3 backend_test/test.py
     - language: node_js

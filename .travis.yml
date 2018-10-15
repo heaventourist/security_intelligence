@@ -7,8 +7,6 @@ matrix:
         - "3.6"
       install:
         - pip install Flask
-      script:
-        - bash run_server
     - language: node_js
       node_js: 
         - "node"

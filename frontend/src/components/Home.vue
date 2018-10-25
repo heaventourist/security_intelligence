@@ -2,8 +2,8 @@
   <div class="home">
     <Row type="flex" justify="end">
       <Col span="3">
-        <Select v-model="search_type" placeholder="Select Search Type" class="searchTypes">
-          <Option v-for="item in searchTypeList" :value="item.value" :key="item.value"></Option>
+        <Select v-model="search_type" placeholder="Select Search Type" clearable class="searchTypes">
+          <Option v-for="item in searchTypeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
         </Select>
       </Col>
       <Col span="4">
@@ -17,7 +17,7 @@
       <Table stripe :loading="loading" :columns="my_col" :data="my_data" :no-data-text="no_data_text"></Table>
     </Row>
     <Row type="flex" justify="center">
-      <Page :current="page_num" :total="page_total" :page-size="page_size" show-total show-sizer @on-change="handle_page" @on-page-size-change="handle_page_size"/>
+      <Page :current="page_num" :total="item_total" :page-size="page_size" show-total show-sizer @on-change="handle_page" @on-page-size-change="handle_page_size"/>
     </Row>
   </div>
 </template>
@@ -95,9 +95,9 @@ export default {
       }
     },
 
-    page_total: function () {
+    item_total: function () {
       var dataSize = this.data_in_total.length
-      return Math.ceil(dataSize / this.page_size)
+      return dataSize
     }
   },
 
